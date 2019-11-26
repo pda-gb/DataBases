@@ -1,4 +1,3 @@
- 
 /*
  
  Урок 5. Видеоурок. Операторы, фильтрация, сортировка и ограничение. Агрегация данных
@@ -184,6 +183,16 @@ SELECT * FROM storehouses ORDER BY IF(value=0,1,0), value;
 
 -- 4.
 
+SELECT * FROM users WHERE MONTHNAME(birthday_at) IN ('may', 'august');
+
+-- 5.
+
+SELECT * FROM catalogs WHERE id IN (5, 1, 2) ORDER BY
+													CASE id
+    												WHEN 5 THEN 1
+												    WHEN 1 THEN 2
+    												WHEN 2 THEN 3
+													END;
 
 
 -- 6.
@@ -203,4 +212,12 @@ SELECT COUNT(*), DAYNAME(DATE_FORMAT((CONCAT(YEAR(NOW()),DATE_FORMAT(birthday_at
 
 
 
---.
+-- 8.
+
+SELECT 8*8;
+
+
+
+
+
+
