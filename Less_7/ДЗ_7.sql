@@ -34,3 +34,28 @@ ON products.catalog_id = catalogs.id;
 
 
 -- 3.
+-- DROP TABLE IF EXISTS flights;
+-- CREATE TABLE flights (
+--   id SERIAL PRIMARY KEY,
+--   `from` VARCHAR(255),
+--   `to` VARCHAR(255)
+--  );
+-- 
+-- DROP TABLE IF EXISTS cities;
+-- CREATE TABLE cities (
+--   id SERIAL PRIMARY KEY,
+--   `label` VARCHAR(255),
+--   `name` VARCHAR(255)
+--  );
+
+
+SELECT 
+  (SELECT name FROM cities WHERE cities.label = flights.`from`) AS `вылет`, 
+  (SELECT name FROM cities WHERE cities.label = flights.`to`) AS `назначение`
+FROM 
+  flights
+JOIN
+  cities
+ON
+  `from` = cities.label
+ ;
